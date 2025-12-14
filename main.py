@@ -6,12 +6,10 @@ Developed using Test-Driven Development (TDD) approach
 
 import os
 from datetime import datetime
+import pandas as pd
 
 
 def log_activity(message: str) -> None:
-    """
-    Log user activities to `activity.log` by appending a timestamped line.
-    """
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     line = f"{timestamp} - INFO - {message}\n"
     try:
@@ -19,3 +17,18 @@ def log_activity(message: str) -> None:
             f.write(line)
     except Exception:
         pass
+
+
+def load_data(csv_path: str) -> pd.DataFrame:
+    """
+    Load vaccination data from CSV file
+    """
+    log_activity(f"Loading data from {csv_path}")
+
+    if not os.path.exists(csv_path):
+        log_activity(f"ERROR: File not found - {csv_path}")
+        raise FileNotFoundError(f"CSV file not found: {csv_path}")
+
+    df = pd.read_csv(csv_path)
+    log_activity(f"Successfully loaded {len(df)} records")
+    return df
