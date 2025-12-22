@@ -1,0 +1,28 @@
+ Quick Start Guide
+
+ Setup (One-time)
+
+1. Create Virtual Environment
+
+python -m venv venv
+.\venv\Scripts\Activate.ps1
+
+
+2. Install Dependencies
+
+pip install -r requirements.txt
+
+
+## Run Application
+
+# Activate virtual environment (if not already active)
+.\venv\Scripts\Activate.ps1
+
+# Run main dashboard
+python main.py
+
+# Run Task 2 demonstration
+python task2_datastructures.py
+
+# Run tests
+pytest test_main.py -v
